@@ -12,7 +12,7 @@ jobs:
         # This checks platform compatibility
         os: [ubuntu-latest, windows-latest, macos-latest] 
         # This checks version compatibility (add/remove versions as needed)
-        release: [R2022b, R2023a, R2023b, R2024a]
+        release: [R2022b, R2023a, R2023b, R2024a, R2024b, R2025a]
         
     steps:
       - name: Check out repository
