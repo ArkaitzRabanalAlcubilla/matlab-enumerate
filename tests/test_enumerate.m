@@ -1,4 +1,19 @@
 classdef test_enumerate < matlab.unittest.TestCase
+    methods (TestClassSetup)
+        function addSourceToPath(testCase)
+            % 1. Get the folder where this test file currently lives
+            testFolder = fileparts(mfilename('fullpath'));
+            
+            % 2. Get the project root (one level up from 'tests')
+            projectRoot = fileparts(testFolder);
+            
+            % 3. Add the project root to the path
+            addpath(projectRoot);
+            
+            % 4. Ensure the path is cleaned up (removed) when tests finish
+            testCase.addTeardown(@rmpath, projectRoot);
+        end
+    end
     methods ( Test )
         function testRowVector(testCase)
             % Test iteration over a row vector (1xN) - should iterate N times
