@@ -1,0 +1,33 @@
+name: MATLAB Tests
+
+on: [push, pull_request]
+
+jobs:
+  run-tests:
+    name: Test on ${{ matrix.os }} with ${{ matrix.release }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # This checks platform compatibility
+        os: [ubuntu-latest, windows-latest, macos-latest] 
+        # This checks version compatibility (add/remove versions as needed)
+        release: [R2022b, R2023a, R2023b, R2024a]
+        
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
+        with:
+          release: ${{ matrix.release }}
+
+      - name: Run Tests
+        uses: matlab-actions/run-tests@v2
+        with:
+          # Point to your test folder
+          select-by-folder: tests
+          # Generates a report you can see in GitHub logs
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
