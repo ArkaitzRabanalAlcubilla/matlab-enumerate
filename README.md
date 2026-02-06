@@ -1,4 +1,5 @@
-# matlab-enumerate
+# Enumerate for MATLAB
+[![MATLAB Tests](https://github.com/ArkaitzRabanalAlcubilla/matlab-enumerate/actions/workflows/matlab-tests.yml/badge.svg?branch=main&event=push)](https://github.com/ArkaitzRabanalAlcubilla/matlab-enumerate/actions/workflows/matlab-tests.yml)
 
 Run `for` loops in MATLAB with automatic index tracking, just like Python's `enumerate()`.
 
